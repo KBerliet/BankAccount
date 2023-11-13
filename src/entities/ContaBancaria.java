@@ -1,38 +1,55 @@
 package entities;
 
 public class ContaBancaria {
-	
-	private int numConta;
-	
-	private String nomeTitular;
-	
-	private double saldo;
+    private int numConta;
+    private String nomeTitular;
+    private double saldo;
 
-	//métodos
-	
-	public void depositar(double valor) {
+    public ContaBancaria(int numConta, String nomeTitular) {
+        this.numConta = numConta;
+        this.nomeTitular = nomeTitular;
+        this.saldo = 0.0;
+    }
 
-		if (valor <=0)  {
-			System.out.println("Valor inválido");
-		}
-		
-		this.saldo += valor;
-		System.out.println("Deposito realizado com sucesso!");
-	}
+    public void depositar(double valor) {
+        saldo += valor;
+    }
+
+    public void sacar(double valor) {
+        if (valor <= saldo) {
+            saldo -= valor;
+        } else {
+            System.out.println("Saldo insuficiente");
+        }
+    }
+
+    public void exibirSaldo() {
+        System.out.println("Saldo: " + saldo);
+    }
 	
-	public void sacar(double valor) {
-		if (valor <=0 || valor > saldo)  {
-			System.out.println("Valor inválido");
-		}
-		else {
-			this.saldo -= valor;
-			System.out.println("\nSaque realizado com sucesso");
-		}
-		
-	}
+	  // Getters e Setters
 	
-	public double exibirSaldo() {
-		return saldo;
-	}
-	
+    public int getNumConta() {
+        return numConta;
+    }
+
+    public void setNumeroConta(int numConta) {
+        this.numConta = numConta;
+    }
+
+    public String getTitular() {
+        return nomeTitular;
+    }
+
+    public void setTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
 }
